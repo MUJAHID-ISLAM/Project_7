@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         
+         <div class="cart">
+            <!-- <h3 style="text-align: center; color: brown;"> <span id="alert"></span></h3> -->
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="subtraction-btn" class="btn btn-default margin-r"><i class="fas fa-minus"></i></button>
+                           <input id="phone-value" type="text" class="form-control text-center" value="1">
+                           <button id="addition-btn" class="btn btn-default margin-l"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5 >$<span id="phone-price">1219</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="case-decrease" class="btn btn-default margin-r"><i class="fas fa-minus  "></i></button>
+                           <input id="case-count" type="text" class="form-control text-center width" value="1">
+                           <button id="case-increase" class="btn btn-default margin-l"><i class="fas fa-plus "></i></button>
+
+                        </div>
+                        <h5>$<span id="case-price">59</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                       
+                        <h5 >$<span id="Subtotal">1278</span></h5>
+                        <h5 >$<span id="Tax">40</span></h5>
+                        <h5 >$<span id="total">1318</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button id="submit" type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+            <h3 class="baba" style="text-align: center; color: brown;"> <span id="alert"></span></h3>
+         </div>
+      </div>
+   </section>
+
+
+
+   <script>
+      //decrease phone button number 
+      var subtractionBtn = document.getElementById('subtraction-btn');
+      subtractionBtn.addEventListener("click",function(){
+         decreaseNumber('phone-value');
+        
+      })
+     function decreaseNumber (value) {
+      var subtraction = document.getElementById(value).value;
+          var subtractionString = parseFloat(subtraction);
+         var add =  -1;
+         var convertString = parseFloat(add);
+         var total = convertString + subtractionString;
+         document.getElementById(value).value = total;
+     }
+
+//increase phone button number 
+       var additionBtn = document.getElementById('addition-btn');
+        additionBtn.addEventListener("click",function(){
+         increaseNumber ('phone-value');
+        
+       })
+       function increaseNumber (value) {
+         var phoneValue = document.getElementById(value).value;
+          var phoneValueString = parseFloat(phoneValue);
+         var to = +1;
+         var convert = parseFloat(to);
+         var done = convert + phoneValueString;
+         document.getElementById(value).value = done;
+       }
+
+      
+     //increase phone price +
+          var additionPriceBtn = document.getElementById('addition-btn');
+         additionPriceBtn.addEventListener("click",function(){
+         increasePhonePrice ('phone-price');
+        
+       })
+       function increasePhonePrice (value) {
+         var phonePrice = document.getElementById(value).innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 1219 ;
+         var to =  phonePriceString + just ;
+         document.getElementById(value).innerText = to;
+       }
+   
+
+   //increase phone price to total price+
+   var additionPriceBtn = document.getElementById('addition-btn');
+         additionPriceBtn.addEventListener("click",function(){
+            increasePhonePrice20tk ('total');
+        
+       })
+       function increasePhonePrice20tk (value) {
+         var phonePrice = document.getElementById(value).innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 20 ;
+         var to =  phonePriceString + just ;
+         document.getElementById(value).innerText = to;
+       }
+
+
+ //increase case price to total price +
+ var additionPriceBtn = document.getElementById('case-increase');
+         additionPriceBtn.addEventListener("click",function(){
+            increaseCasePrice20tk ('total');
+        
+       })
+       function increaseCasePrice20tk (value) {
+         var phonePrice = document.getElementById(value).innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 20 ;
+         var to =  phonePriceString + just ;
+         document.getElementById(value).innerText = to;
+       }
+       
+
+   
+  //decrease phone price to total price+
+  var additionPriceBtn = document.getElementById('subtraction-btn');
+         additionPriceBtn.addEventListener("click",function(){
+            decreasePhonePrice20tk ('total');
+        
+       })
+       function decreasePhonePrice20tk (value) {
+         var phonePrice = document.getElementById(value).innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 20 ;
+         var to =  phonePriceString - just ;
+         document.getElementById(value).innerText = to;
+       }
+
+
+
+
+ //decrease case price to total price +
+ var additionPriceBtn = document.getElementById('case-decrease');
+         additionPriceBtn.addEventListener("click",function(){
+            decreaseCasePrice20tk ('total');
+        
+       })
+       function decreaseCasePrice20tk (value) {
+         var phonePrice = document.getElementById(value).innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 20 ;
+         var to =  phonePriceString - just ;
+         document.getElementById(value).innerText = to;
+       }
+
+
+
+
+
+
+       //increase Subtotal price  +
+       var additionPriceBtn = document.getElementById('subtraction-btn');
+       additionPriceBtn.addEventListener("click",function(){
+      
+       var phonePrice = document.getElementById('Subtotal').innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 1219 ;
+         var to =  phonePriceString - just ;
+         document.getElementById('Subtotal').innerText = to;  
+       })
+
+
+
+
+        //increase TaX price +
+     var additionPriceBtn = document.getElementById('addition-btn');
+       additionPriceBtn.addEventListener("click",function(){
+         taxIncrease('Tax');
+         
+       })
+        //taxDecrease TaX price +
+    var subtractionBtn = document.getElementById('subtraction-btn');
+       subtractionBtn.addEventListener("click",function(){
+         taxDecrease ('Tax');
+        
+      })
+       function taxIncrease (value) {
+         var phonePrice = document.getElementById(value).innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 20;
+         var to =  phonePriceString + just ;
+         document.getElementById(value).innerText = to;
+       }
+
+       function taxDecrease (value) {
+         var phonePrice = document.getElementById(value).innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 20;
+         var to =  phonePriceString - just ;
+         document.getElementById(value).innerText = to;
+       }
+       //decrease phone Price -
+       var subtractionBtn = document.getElementById('subtraction-btn');
+       subtractionBtn.addEventListener("click",function(){
+         decreasePrice ('phone-price');
+        
+      })
+
+     //total price increase +
+     var additionPriceBtn = document.getElementById('addition-btn');
+       additionPriceBtn.addEventListener("click",function(){
+         increasePhonePrice ('total');  
+       })
+
+
+      
+   function decreasePrice (decreasePriceValue) {
+      var phonePrice = document.getElementById(decreasePriceValue).innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 1219 ;
+         var to =  phonePriceString - just ;
+         document.getElementById(decreasePriceValue).innerText = to;
+   }
+
+
+    //decrease Subtotal Price -
+    var subtractionBtn = document.getElementById('addition-btn');
+       subtractionBtn.addEventListener("click",function(){
+        
+         var phonePrice = document.getElementById('Subtotal').innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 1219 ;
+         var to =  phonePriceString + just ;
+         document.getElementById('Subtotal').innerText = to;
+        
+      })
+
+          //total Subtotal Price -
+    var subtractionBtn = document.getElementById('subtraction-btn');
+       subtractionBtn.addEventListener("click",function(){
+         decreasePrice ('total');
+        
+      })
+  
+
+
+ //start case price 
+
+//increase case button number 
+var additionBtn = document.getElementById('case-increase');
+        additionBtn.addEventListener("click",function(){
+         increaseNumber ('case-count');
+        
+       })
+
+  //decrease case button number 
+  var subtractionBtn = document.getElementById('case-decrease');
+      subtractionBtn.addEventListener("click",function(){
+         decreaseNumber('case-count');
+        
+      })
+
+
+ //increase case price ++
+       function increaseCasePrice (value) {
+         var phonePrice = document.getElementById(value).innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 59;
+         var to =  phonePriceString + just ;
+         document.getElementById(value).innerText = to;
+       }
+
+       var additionPriceBtn = document.getElementById('case-increase');
+         additionPriceBtn.addEventListener("click",function(){
+            increaseCasePrice ('case-price');
+        
+       })
+
+ //decrease case price ++
+          var additionPriceBtn = document.getElementById('case-decrease');
+         additionPriceBtn.addEventListener("click",function(){
+            decreaseCasePrice ('case-price');
+        
+       })
+
+       function decreaseCasePrice (value) {
+         var phonePrice = document.getElementById(value).innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 59;
+         var to =  phonePriceString - just ;
+         document.getElementById(value).innerText = to;
+       }
+
+
+//increase case TaX price +
+    var additionPriceBtn = document.getElementById('case-increase');
+       additionPriceBtn.addEventListener("click",function(){
+         taxIncrease('Tax');
+         
+       })
+ //taxDecrease case TaX price +
+    var subtractionBtn = document.getElementById('case-decrease');
+       subtractionBtn.addEventListener("click",function(){
+         taxDecrease ('Tax');
+        
+      })
+
+
+ //increase case Subtotal price  +
+      var additionPriceBtn = document.getElementById('case-increase');
+       additionPriceBtn.addEventListener("click",function(){
+         increaseSubtotalPrice ('Subtotal');  
+         increaseSubtotalPrice ('total');  
+       })
+
+       function increaseSubtotalPrice (value) {
+         var phonePrice = document.getElementById(value).innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 59;
+         var to =  phonePriceString + just ;
+         document.getElementById(value).innerText = to;
+       }
+
+ //decrease case Subtotal price  +
+      var additionPriceBtn = document.getElementById('case-decrease');
+       additionPriceBtn.addEventListener("click",function(){
+         decreaseSubtotalPrice ('Subtotal');
+         decreaseSubtotalPrice ('total');    
+       })
+
+       function decreaseSubtotalPrice (value) {
+      var phonePrice = document.getElementById(value).innerText;
+         var phonePriceString = parseFloat(phonePrice);
+         var just = 59;
+         var to =  phonePriceString - just ;
+         document.getElementById(value).innerText = to;
+   }
+
+
+
+
+ var submit = document.getElementById('submit');
+      submit.addEventListener('click',function(){
+      
+    var takeTotalValue = document.getElementById('total').innerText;
+    var valueString = parseFloat(takeTotalValue);
+    var sendAlert = document.getElementById('alert').innerText;
+    var sendAlertString = parseFloat(sendAlert);
+    var none = "Congratulation Your Price is : ";
+    document.getElementById('alert').innerText = none + valueString;
+  
+ })
+   
+   </script>
+   
+</body>
+</html>
